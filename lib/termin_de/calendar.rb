@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'curb'
+require 'httparty'
 require 'nokogiri'
 require 'time'
 
@@ -66,12 +66,8 @@ module TerminDe
     def download_latest_calendar
       return Nokogiri.parse(File.read(SAMPLES_PATH)) if @options.dry_run?
 
-      curl = Curl::Easy.new
-      curl.enable_cookies = true
-      curl.follow_location = true
-      curl.url = url
-      curl.http_get
-      Nokogiri.parse(curl.body_str)
+      response = HTTParty.get(url, format: :plain, follow_redirects: true)
+      Nokogiri.parse(response.body)
     end
   end
 end

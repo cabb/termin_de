@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.executables   = ['termin_de']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'curb', '>= 0.8.8'
-  spec.add_dependency 'nokogiri', '>= 1.6.6'
+  spec.add_dependency 'httparty', '~> 0.18.1'
+  spec.add_dependency 'nokogiri', '~> 1.11', '>= 1.11.1'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'pry', '~> 0.10'
